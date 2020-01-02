@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+				border: 0px;
+			}
+			body{
+				background-image: url(img/bg.jpg);
+			}
+			.num{
+				position: fixed;
+			}
+			#num1{
+				left: 404px;
+				top: 94px;
+			}
+			#num2{
+				left: 648px;
+				top: 392px;
+			}
+			#num3{
+				left: 512px;
+				top: 316px;
+			}
+			#title1{
+				left: 516px;
+				top: 288px;
+				width: 252px;
+			}
+			#num3>input{
+				border: thick 5px chocolate;
+				width:338px; 
+				height:54px;
+				border-radius: 10px;
+				text-align: center;
+			}
+			#endimg{
+				left: 736px;
+				top: 98px;
+			}
+			#endimg>div>img{
+				width: 150px;
+			}
+			#pro_num{
+				left: 736px;
+				top: 386px;
+			}
+		</style>
+		<script type="text/javascript">
+			var a = 100;
+			var num = parseInt(a * Math.random());
+			var i = 0;
+			var j = 100;
+			var m = 0;
+			var n = 100;
+
+			function comnum() {
+				var o = document.getElementById("numset").value
+				if (document.getElementById("numset").value == "") {
+					alert("请说出你的想法");
+				} else {
+					if (!(o < m && o > n)) {
+						if (o != num) {
+							if (o > num) {
+								document.getElementById("big").style.display = "block";
+								document.getElementById("small").style.display = "none";
+								document.getElementById("win").style.display = "none";
+								n = o;
+								document.getElementById("pro_m").innerHTML = m;
+								document.getElementById("pro_n").innerHTML = n;
+							} else if (o < num) {
+								document.getElementById("small").style.display = "block";
+								document.getElementById("big").style.display = "none";
+								document.getElementById("win").style.display = "none";
+								m = o;
+								document.getElementById("pro_m").innerHTML = m;
+								document.getElementById("pro_n").innerHTML = n;
+							}else{
+								document.getElementById("pro_num").innerHTML = o;
+							}
+						} else {
+							document.getElementById("win").style.display = "block";
+							document.getElementById("big").style.display = "none";
+							document.getElementById("small").style.display = "none";
+							document.getElementById("pro_num").innerHTML = num;
+						}
+					} else {
+						alert("请确认输入范围");
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+			<div id="num1" class="num">
+				<img src="img/main.png" height="430px" />
+			</div>
+			<div id="title1" class="num"><strong>
+					<marquee direction="left">请输入0-100中的值进行猜数，猜中有奖!!!</marquee>
+				</strong></div>
+			<div id="num2" class="num" onclick="comnum()">
+				<img src="img/button.png" width="74px" />
+			</div>
+			<div id="num3" class="num">
+				<input type="text" id="numset" />
+			</div>
+		<div id="endimg" class="num">
+			<div id="small" class="num" style="display: none;"><img src="img/small.png" /></div>
+			<div id="big" class="num" style="display: none;"><img src="img/big.png" /></div>
+			<div id="win" class="num" style="display: none;"><img src="img/win.png" /></div>
+		</div>
+		<div id="pro_num" class="num">介于<div id="pro_m" style="display: inline;">0</div>和<div id="pro_n" style="display: inline;">100</div>之间</div>
+	</body>
+</html>
